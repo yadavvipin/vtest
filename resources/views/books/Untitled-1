@@ -1,0 +1,76 @@
+@extends('libhome')
+@section('content')
+  
+            <div class="row">
+	
+   <div class="col-lg-12">
+	   
+                    <h1 class="page-header">Student Detail</h1>
+   </div>
+                
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">STUDENT DETAILS</div>
+                <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                    	<tr>
+                    		<td>Sr.No</td>
+							<td>STUDENT INFO ID</td>
+							<td>STUDENT UNIQUE ID</td>
+                    		<td>FIRST NAME</td>
+							<td>MIDDLE NAME</td>
+							<td>LAST NAME</td>
+                    		<td>EMAIL</td>
+                            <td>MOBILE</td>
+                            
+                            <td>APPROVE</td>
+                            
+
+                            </tr>
+                    	
+
+                    	@foreach($details as $b)
+                    	<tr>
+                    		<td>{{$b->id}}</td>
+                    		<td>{{$b->name}}</td>
+                    		<td>{{$b->enrollname}}</td>
+                            <td>{{$b->branch}}</td>
+                            <td>{{$b->email}}</td>
+                            <td>{{$b->year}}</td>
+                            @if($b->approved)
+                            <td><a href="{{url('/rej',array('approved'=>'approve','id'=>$b->id))}}" class="btn btn-danger">Reject</a></td>
+                            @else
+                            <td><a href="{{url('/rej',array('approved'=>'reject','id'=>$b->id))}}" class="btn btn-success">Approve</a></td>
+                            @endif
+             
+
+                            </tr>
+                    		
+                    	
+                    	@endforeach
+                    </table>
+
+
+                         <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+
+                    <a class="btn btn-link" href="{{url('/libhome')}}">Homepage</a>
+                    
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
